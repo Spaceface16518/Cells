@@ -39,6 +39,10 @@ public:
     // TODO: get ride of this as well
     void setAlive(int x, int y);
 
+    bool isAlive(int i) const;
+
+    void setAlive(int i);
+
     int rawSize() const {
         return this->width * this->height;
     }

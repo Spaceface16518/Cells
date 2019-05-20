@@ -148,3 +148,11 @@ void Board::setAlive(int x, int y) {
     int i = this->toRaw(x, y);
     this->grid[i].makeAlive();
 }
+
+bool Board::isAlive(int i) const {
+    return this->grid[i].isAlive();
+}
+
+void Board::setAlive(int i) {
+    this->grid[i].makeAlive();
+}
