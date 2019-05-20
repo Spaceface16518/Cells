@@ -4,7 +4,7 @@ project(cells)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-if (APPLE)
+if (UNIX)
     include_directories("/usr/local/include") # For Homebrew packages mainly
 endif ()
 
