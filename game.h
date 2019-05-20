@@ -13,5 +13,6 @@ void render(sf::RenderWindow *&renderWindow, const Board *board);
 
 void update(sf::RenderWindow *&renderWindow, Board *&board);
 
+void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow *&window, Board *&board);
 
 #endif //CELLS_GAME_H

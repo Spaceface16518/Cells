@@ -2,6 +2,7 @@
 // Created by Amrit Rathie on 2019-05-16.
 //
 
+#include <SFML/Graphics.hpp>
 #include <tuple>
 #include <csignal>
 #include <unistd.h>
@@ -10,6 +11,8 @@
 #include <iostream>
 #include "game.h"
 #include "options.h"
+
+void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow *&window, Board *&board);
 
 void render(sf::RenderWindow *&renderWindow, const Board *board) {
     renderWindow->clear(sf::Color::Black);
@@ -36,4 +39,22 @@ void update(sf::RenderWindow *&renderWindow, Board *&board) {
     board = board->next();
     // TODO: handle window resizing
 //        delete newBoard; // TODO: is this necessary? newBoard should be destroyed when scope ends
+}
+
+void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow *&window,
+              Board *&board) {// FIXME: make sure all parameters are in the right place
+    constexpr int windowHeight = 1600;
+    constexpr int windowWidth = 1200;
+    window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Conway's Game of Life!");
+
+    constexpr int boardHeight = windowHeight / cellSize;
+    constexpr int boardWidth = windowWidth / cellSize;
+    board = new Board(boardWidth, boardHeight);
+
+    for (auto &coord : initial) {
+        int x, y;
+        std::tie(x, y) = coord;
+
+        board->setAlive(x, y);
+    }
 }

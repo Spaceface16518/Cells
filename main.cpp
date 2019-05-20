@@ -14,22 +14,7 @@ int main(int argc, const char **argv) {
     const float delay = 0.15; // TODO: make this interactive/user-modifiable
 
     auto initial = get_initial_living(argc, argv);
-
-    // FIXME: make sure all parameters are in the right place
-    constexpr int windowHeight = 1600;
-    constexpr int windowWidth = 1200;
-    window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Conway's Game of Life!");
-
-    constexpr int boardHeight = windowHeight / cellSize;
-    constexpr int boardWidth = windowWidth / cellSize;
-    board = new Board(boardWidth, boardHeight);
-
-    for (auto &coord : initial) {
-        int x, y;
-        std::tie(x, y) = coord;
-
-        board->setAlive(x, y);
-    }
+    initGame(initial, window, board);
 
     // TODO: make game interactive
 
