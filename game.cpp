@@ -12,8 +12,6 @@
 #include "game.h"
 #include "options.h"
 
-void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow *&window, Board *&board);
-
 void render(sf::RenderWindow *&renderWindow, const Board *board) {
     renderWindow->clear(sf::Color::Black);
 
