@@ -5,14 +5,13 @@
 #ifndef CELLS_GAME_H
 #define CELLS_GAME_H
 
-void finish(int sig);
+#include <SFML/Graphics.hpp>
 
-void render(const int &screenWidth, const int &screenHeight, Board *board);
+const unsigned int cellSize = 20;
 
-void update(int &screenWidth, int &screenHeight, Board *&board);
+void render(sf::RenderWindow *&renderWindow, const Board *board);
 
-void delay();
+void update(sf::RenderWindow *&renderWindow, Board *&board);
 
-void initGame(int &screenWidth, int &screenHeight, Board *&board, std::vector<std::tuple<int, int>> &initial);
 
 #endif //CELLS_GAME_H
