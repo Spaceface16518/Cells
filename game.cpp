@@ -25,7 +25,7 @@ void renderBoard(sf::RenderWindow *&renderWindow, const Board *board) {
 
             rect.setPosition(static_cast<float>(x * cellSize), static_cast<float>(y * cellSize));
             rect.setFillColor(sf::Color::White);
-            rect.scale(0.9, 0.9);
+            rect.scale(0.95, 0.95);
 
             renderWindow->draw(rect);
         }
