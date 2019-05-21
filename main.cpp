@@ -12,7 +12,7 @@ int main(int argc, const char **argv) {
     Board *board = nullptr;
     sf::Clock clock;
     float delay = 0.15;
-    bool paused = false;
+    bool paused = false; // TODO: add UI pause indicator
 
     auto initial = get_initial_living(argc, argv);
     initGame(initial, window, board);
