@@ -9,9 +9,9 @@
 
 const unsigned int cellSize = 20;
 
-void render(sf::RenderWindow *&renderWindow, const Board *board);
+void renderBoard(sf::RenderWindow *&renderWindow, const Board *board);
 
-void update(sf::RenderWindow *&renderWindow, Board *&board);
+void updateBoard(sf::RenderWindow *&renderWindow, Board *&board);
 
 void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow *&window, Board *&board);
 

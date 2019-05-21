@@ -12,7 +12,7 @@
 #include "game.h"
 #include "options.h"
 
-void render(sf::RenderWindow *&renderWindow, const Board *board) {
+void renderBoard(sf::RenderWindow *&renderWindow, const Board *board) {
     renderWindow->clear(sf::Color::Black);
 
     // TODO: optimize this a bunch
@@ -25,6 +25,7 @@ void render(sf::RenderWindow *&renderWindow, const Board *board) {
 
             rect.setPosition(static_cast<float>(x * cellSize), static_cast<float>(y * cellSize));
             rect.setFillColor(sf::Color::White);
+            rect.scale(0.9, 0.9);
 
             renderWindow->draw(rect);
         }
@@ -33,7 +34,7 @@ void render(sf::RenderWindow *&renderWindow, const Board *board) {
     renderWindow->display();
 }
 
-void update(sf::RenderWindow *&renderWindow, Board *&board) {
+void updateBoard(sf::RenderWindow *&renderWindow, Board *&board) {
     board = board->next();
     // TODO: handle window resizing
 //        delete newBoard; // TODO: is this necessary? newBoard should be destroyed when scope ends

@@ -11,7 +11,8 @@ int main(int argc, const char **argv) {
     sf::RenderWindow *window = nullptr;
     Board *board = nullptr;
     sf::Clock clock;
-    const float delay = 0.15; // TODO: make this interactive/user-modifiable
+    float delay = 0.15;
+    bool paused = false;
 
     auto initial = get_initial_living(argc, argv);
     initGame(initial, window, board);
@@ -22,18 +23,34 @@ int main(int argc, const char **argv) {
         sf::Event event{};
 
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window->close();
+            switch (event.type) {
+                case sf::Event::Closed:
+                    window->close();
+                    break;
+                case sf::Event::KeyPressed:
+                    switch (event.key.code) {
+                        case sf::Keyboard::Space:
+                            paused = !paused;
+                            clock.restart();
+                            break;
+                        case sf::Keyboard::Down:
+                            delay += 0.01;
+                            break;
+                        case sf::Keyboard::Up:
+                            delay -= 0.01;
+                            break;
+                    }
+                    break;
             }
         }
 
         auto elapsedTime = clock.getElapsedTime();
-        if (elapsedTime.asSeconds() >= delay) {
-            update(window, board);
+        if (elapsedTime.asSeconds() >= delay && !paused) {
+            updateBoard(window, board);
             clock.restart();
         }
 
-        render(window, board);
+        renderBoard(window, board); // FIXME: shouldn't have to render this often
     }
 
     return 0;
