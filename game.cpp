@@ -45,6 +45,7 @@ void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow
     constexpr int windowHeight = 1600;
     constexpr int windowWidth = 1200;
     window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Conway's Game of Life!");
+    window->setFramerateLimit(10);
 
     constexpr int boardHeight = windowHeight / cellSize;
     constexpr int boardWidth = windowWidth / cellSize;

@@ -50,7 +50,7 @@ int main(int argc, const char **argv) {
             clock.restart();
         }
 
-        renderBoard(window, board); // FIXME: shouldn't have to render this often
+        renderBoard(window, board);
     }
 
     return 0;
