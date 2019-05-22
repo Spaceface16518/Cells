@@ -156,3 +156,12 @@ bool Board::isAlive(int i) const {
 void Board::setAlive(int i) {
     this->grid[i].makeAlive();
 }
+
+void Board::toggle(int i) {
+    this->grid[i].setAlive(!this->isAlive(i));
+}
+
+void Board::toggle(int x, int y) {
+    int i = this->toRaw(x, y);
+    this->grid[i].setAlive(!this->isAlive(i));
+}

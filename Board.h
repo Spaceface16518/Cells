@@ -43,6 +43,10 @@ public:
 
     void setAlive(int i);
 
+    void toggle(int i);
+
+    void toggle(int x, int y);
+
     int rawSize() const {
         return this->width * this->height;
     }

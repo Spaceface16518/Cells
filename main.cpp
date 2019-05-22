@@ -17,8 +17,6 @@ int main(int argc, const char **argv) {
     auto initial = get_initial_living(argc, argv);
     initGame(initial, window, board);
 
-    // TODO: make game interactive
-
     while (window->isOpen()) {
         sf::Event event{};
 
@@ -40,6 +38,12 @@ int main(int argc, const char **argv) {
                             delay -= 0.01;
                             break;
                     }
+                    break;
+                case sf::Event::MouseButtonPressed:
+                    int x = event.mouseButton.x / cellSize;
+                    int y = event.mouseButton.y / cellSize;
+
+                    board->toggle(x, y);
                     break;
             }
         }
