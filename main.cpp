@@ -22,14 +22,14 @@ int main(int argc, const char **argv) {
                 case sf::Event::KeyPressed:
                     switch (event.key.code) {
                         case sf::Keyboard::Space:
-                            game->paused = !game->paused;
-                            game->clock.restart();
+                            game->toggle_pause();
+                            game->restart_clock();
                             break;
                         case sf::Keyboard::Down:
-                            game->delay += 0.01;
+                            game->increment_delay();
                             break;
                         case sf::Keyboard::Up:
-                            game->delay -= 0.01;
+                            game->decrement_delay();
                             break;
                     }
                     break;
@@ -42,10 +42,9 @@ int main(int argc, const char **argv) {
             }
         }
 
-        auto elapsedTime = game->clock.getElapsedTime();
-        if (elapsedTime.asSeconds() >= game->delay && !game->paused) {
+        if (game->getElapsedClockTime() >= game->delay && !game->paused) {
             updateBoard(game->window, game->board);
-            game->clock.restart();
+            game->restart_clock();
         }
 
         renderBoard(game->window, game->board);

@@ -14,6 +14,27 @@ class GameState {
 public:
     GameState(sf::RenderWindow *window, Board *board);
 
+    // Toggles the current pause state of the game, and returns the new state
+    inline void toggle_pause() {
+        this->paused = !this->paused;
+    }
+
+    inline void restart_clock() {
+        this->clock.restart();
+    }
+
+    inline float getElapsedClockTime() {
+        return this->clock.getElapsedTime().asSeconds();
+    }
+
+    inline void increment_delay(float by = 0.01) {
+        this->delay += by;
+    }
+
+    inline void decrement_delay(float by = 0.01) {
+        this->delay -= by;
+    }
+
 public:
     bool paused; // TODO: add UI pause indicator
     float delay;
