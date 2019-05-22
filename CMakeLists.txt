@@ -11,8 +11,8 @@ endif ()
 find_package(SFML 2.5 REQUIRED COMPONENTS graphics)
 
 
-add_executable(cells main.cpp game.cpp game.h Board.cpp Board.h Cell.cpp Cell.h mod.h options.cpp options.h)
-add_executable(test test.cpp catch.h Board.cpp Board_test.cpp Board.h Cell.cpp Cell.h mod.h mod_test.cpp game.cpp game.h)
+add_executable(cells main.cpp game.cpp game.h Board.cpp Board.h Cell.cpp Cell.h mod.h options.cpp options.h GameState.cpp GameState.h)
+add_executable(test test.cpp catch.h Board.cpp Board_test.cpp Board.h Cell.cpp Cell.h mod.h mod_test.cpp game.cpp game.h GameState.cpp GameState.h)
 
 target_link_libraries(cells sfml-graphics)
 target_link_libraries(test sfml-graphics)

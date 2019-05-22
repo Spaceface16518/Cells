@@ -40,16 +40,16 @@ void updateBoard(sf::RenderWindow *&renderWindow, Board *&board) {
 //        delete newBoard; // TODO: is this necessary? newBoard should be destroyed when scope ends
 }
 
-void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow *&window,
-              Board *&board) {// FIXME: make sure all parameters are in the right place
+GameState *
+initGame(const std::vector<std::tuple<int, int>> initial) {// FIXME: make sure all parameters are in the right place
     constexpr int windowHeight = 1600;
     constexpr int windowWidth = 1200;
-    window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Conway's Game of Life!");
+    auto window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Conway's Game of Life!");
     window->setFramerateLimit(10);
 
     constexpr int boardHeight = windowHeight / cellSize;
     constexpr int boardWidth = windowWidth / cellSize;
-    board = new Board(boardWidth, boardHeight);
+    auto board = new Board(boardWidth, boardHeight);
 
     for (auto &coord : initial) {
         int x, y;
@@ -57,4 +57,6 @@ void initGame(const std::vector<std::tuple<int, int>> &initial, sf::RenderWindow
 
         board->setAlive(x, y);
     }
+
+    return new GameState(window, board);
 }
