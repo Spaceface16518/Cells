@@ -2,15 +2,7 @@
 // Created by Amrit Rathie on 2019-05-16.
 //
 
-#include <SFML/Graphics.hpp>
-#include <tuple>
-#include <csignal>
-#include <unistd.h>
-#include "curses.h"
-#include "Board.h"
-#include <iostream>
 #include "game.h"
-#include "options.h"
 
 void render(GameState *&gameState) {
     gameState->window->clear();

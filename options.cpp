@@ -1,11 +1,9 @@
 //
 // Created by Amrit Rathie on 2019-05-18.
 //
-
 #include <string>
 #include <fstream>
 #include <regex>
-#include <iostream>
 #include "options.h"
 
 std::string get_file_contents(const char *filename);

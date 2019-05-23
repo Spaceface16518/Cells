@@ -2,10 +2,8 @@
 // Created by Amrit Rathie on 2019-05-13.
 //
 
-#include <numeric>
 #include "Board.h"
 #include "mod.h"
-#include <tuple>
 
 // Neighbor coordinates of a certain coordinate pair
 // Generated from top row, left corner, in clockwise direction (ending on middle row, left side)

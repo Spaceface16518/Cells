@@ -6,6 +6,7 @@
 #define CELLS_OPTIONS_H
 
 #include <vector>
+#include <tuple>
 
 std::vector<std::tuple<int, int>> get_initial_living(int argc, const char *argv[]);
 

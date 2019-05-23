@@ -1,11 +1,5 @@
-#include <iostream>
-#include "Board.h"
-#include "game.h"
 #include "options.h"
-#include <unistd.h>
-#include <csignal>
-#include <tuple>
-#include <SFML/Graphics.hpp>
+#include "game.h"
 
 int main(int argc, const char **argv) {
     auto initial = get_initial_living(argc, argv);

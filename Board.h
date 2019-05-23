@@ -5,9 +5,9 @@
 #ifndef CELLS_BOARD_H
 #define CELLS_BOARD_H
 
-
-#include <vector>
 #include "Cell.h"
+#include <tuple>
+#include <vector>
 
 class Board {
 public:

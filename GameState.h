@@ -5,9 +5,7 @@
 #ifndef CELLS_GAMESTATE_H
 #define CELLS_GAMESTATE_H
 
-
-#include <SFML/System/Clock.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics.hpp>
 #include "Board.h"
 
 class GameState {
