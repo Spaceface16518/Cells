@@ -36,7 +36,7 @@ public:
     }
 
 public:
-    bool paused; // TODO: add UI pause indicator
+    bool paused;
     float delay;
     sf::Clock clock;
     sf::RenderWindow *window;

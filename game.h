@@ -10,12 +10,16 @@
 
 const unsigned int cellSize = 20;
 
+void render(GameState *&gameState);
+
 void renderBoard(sf::RenderWindow *&renderWindow, const Board *board);
 
-void renderUI(sf::RenderWindow *&renderWindow, GameState *gameState);
+void renderUI(bool paused, sf::RenderWindow *&window);
+
+void update(GameState *&gameState);
 
 void updateBoard(sf::RenderWindow *&renderWindow, Board *&board);
 
-GameState *initGame(const std::vector<std::tuple<int, int>> initial);
+GameState *initGame(std::vector<std::tuple<int, int>> initial);
 
 #endif //CELLS_GAME_H

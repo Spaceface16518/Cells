@@ -12,9 +12,17 @@
 #include "game.h"
 #include "options.h"
 
-void renderBoard(sf::RenderWindow *&renderWindow, const Board *board) {
-    renderWindow->clear(sf::Color::Black);
+void render(GameState *&gameState) {
+    gameState->window->clear();
 
+    renderBoard(gameState->window, gameState->board);
+    renderUI(gameState->paused, gameState->window);
+
+    gameState->window->display();
+}
+
+
+void renderBoard(sf::RenderWindow *&renderWindow, const Board *board) {
     // TODO: optimize this a bunch
     for (int i = 0; i < board->rawSize(); i++) {
         if (board->isAlive(i)) {
@@ -30,14 +38,33 @@ void renderBoard(sf::RenderWindow *&renderWindow, const Board *board) {
             renderWindow->draw(rect);
         }
     }
+}
 
-    renderWindow->display();
+void renderUI(bool paused, sf::RenderWindow *&window) {
+    if (paused) {
+        sf::CircleShape triangle(35.0, 3); // TODO: don't create this every time it needs to be rendered
+
+        const float offset = 49.49747468;
+
+        triangle.setOrigin(triangle.getOrigin() + sf::Vector2f(offset, offset));
+        triangle.setPosition(offset, offset);
+        triangle.setRotation(90.0);
+        triangle.setFillColor(sf::Color(0, 0, 255, 191));
+
+        window->draw(triangle);
+    }
+}
+
+void update(GameState *&gameState) {
+    if (gameState->getElapsedClockTime() >= gameState->delay && !gameState->paused) {
+        updateBoard(gameState->window, gameState->board);
+        gameState->restart_clock();
+    }
 }
 
 void updateBoard(sf::RenderWindow *&renderWindow, Board *&board) {
     board = board->next();
     // TODO: handle window resizing
-//        delete newBoard; // TODO: is this necessary? newBoard should be destroyed when scope ends
 }
 
 GameState *

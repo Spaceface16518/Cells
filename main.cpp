@@ -42,12 +42,8 @@ int main(int argc, const char **argv) {
             }
         }
 
-        if (game->getElapsedClockTime() >= game->delay && !game->paused) {
-            updateBoard(game->window, game->board);
-            game->restart_clock();
-        }
-
-        renderBoard(game->window, game->board);
+        update(game);
+        render(game);
     }
 
     return 0;
